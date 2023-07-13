@@ -1,4 +1,11 @@
-fixtures holds optional JSON data for mocking, read more
-e2e holds the actual test files, read more
-plugins allow you to customize how tests are loaded, read more
-support/pages holds page objects
+1. Install dependencies:
+
+npm install 
+
+2. For testing with UI mode
+
+npx cypress open
+
+3. For testing all tests without UI mode 
+
+npx cypress run

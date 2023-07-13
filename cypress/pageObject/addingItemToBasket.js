@@ -4,9 +4,7 @@ export class addToBasket{
         .should('be.visible')
         .click()
     }
-    openHomePage(){
-        cy.visit('https://allo.ua/')
-    }
+
     verifyItemsList(){
         cy.get('.mm__list').should('exist', {timeout: 15000})
     }
@@ -14,14 +12,10 @@ export class addToBasket{
         cy.get('h2 [href="https://allo.ua/ua/televizory/"]')
         .click()
     }
-    addItemToBasket(){
-        cy.get('[data-product-id="9703087"] .v-btn--cart')
+    addFirstElementToBasket(){
+        cy.get('.v-btn--cart')
+        .first()
         .click()
-    }
-    exitBasket(){
-        cy.get('button.comeback')
-        .click()
-
     }
     returnHomePage(){
         cy.get('.snap-slider__item [title="Перейти на головну сторінку"]')
@@ -35,24 +29,35 @@ export class addToBasket{
         cy.get('a[title="Ноутбуки"]')
         .click()
     }
-    addSecondItemToBasket(){
-        cy.get('[data-product-id="11913346"] .v-btn--cart')
+    addSecondElementToBasket(){
+        cy.get('.v-btn--cart')
+        .eq(1)
         .click()
     }
-    exit2Basket(){
+    verifyBasketOpened(){
+        cy.wait(3000)
+        cy.get('.cart-popup__content .title')
+        .should('exist')
+
+    }
+    
+    clouseBasket(){
         cy.get('button.comeback')
+        .should('exist',{timeout: 20000})
         .click()
     }
     openBasket(){
         cy.get('.mh-cart [aria-label="Кошик"]')
         .click()
     }
-    checkFirstItemInBucket(televizor){
-        cy.get('.title [href="https://allo.ua/ua/televizory/televizor-xiaomi-mi-tv-q1e-55.html"]')
+    checkFirstItemInBucketByName(televizor){
+        cy.get('.title')
+        .first()
         .should('contain.text', televizor)
     }
-    checkSecondItemInBucket(notebook){
-        cy.get('.title [href="https://allo.ua/ua/products/notebooks/mi-redmibook-15-i3-8-256-jyu4436id.html"]')
+    checkSecondItemInBucketByName(notebook){
+        cy.get('.title')
+        .eq(1)
         .should('contain.text', notebook)
     }
     verifyPrise(price){
@@ -61,4 +66,4 @@ export class addToBasket{
       .should('be.visible')
     }
 }
-export const itemAdd = new addToBasket()
+export const addingItem = new addToBasket()

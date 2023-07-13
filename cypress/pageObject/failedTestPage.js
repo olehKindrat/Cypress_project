@@ -1,12 +1,9 @@
-export class SearchTheItem {
-    openHomePage(){
-        cy.visit('https://allo.ua/')
-    }
+export class FailedTestPage {
     typeSearchRequest(itemName){
         cy.get('input#search-form__input')
         .type(itemName)
     }
-    search(){
+    clickSearchButton(){
         cy.get('button.search-form__submit-button')
         .click()
     }
@@ -16,6 +13,4 @@ export class SearchTheItem {
     }
 
 }
-export const itemSearch = new SearchTheItem()
-
-
+export const testFail = new FailedTestPage()
