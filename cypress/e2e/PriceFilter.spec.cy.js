@@ -24,8 +24,5 @@ it('verifyPriceAndItemSorting ', () => {
     applyFilters.sortItemsExpToCheap()
     applyFilters.verifyFilterSelected()
     applyFilters.verifyFilterFromAndTo(10000, 80000)
-
-
-
 })
 })
